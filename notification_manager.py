@@ -1,8 +1,10 @@
 import requests
 from twilio.rest import Client
 import smtplib
+import os
+
 TWILIO_SID = "ACc9e455e6222f8e25d26efa37367215c5"
-TWILIO_APIKEY = "c3050ae83d60588d6f979b61a05aa0e7"
+TWILIO_APIKEY = os.environ.get("TWILIO_API_KEY")
 VIRTUAL_TWILIO_NUMBER = "+18176314741"
 VERIFIED_NUMBER = "+56995433931"
 
@@ -13,7 +15,7 @@ MY_PASSWORD = "osxpvbvolrcsicsi"
 
 class NotificationManager:
     def __init__(self):
-        self.client = Client(TWILIO_SID, TWILIO_APIKEY)
+        self.client = Client(TWILIO_SID, TWILIO_APIKEY) 
 
     def send_sms(self, message):
         message = self.client.messages.create(

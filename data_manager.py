@@ -1,9 +1,12 @@
-from pprint import pprint
+
 import requests
+import os
 SHEETY_PRICES_ENDPOINT = "https://api.sheety.co/15fa2532238887f9ff79feeef7c23f27/ofertasDeVuelos/prices"
 SHEETY_USERS_ENDPOINT = "https://api.sheety.co/15fa2532238887f9ff79feeef7c23f27/ofertasDeVuelos/users"
+SHEETY_API_KEY = os.environ.get("SHEETY_API_KEY")
+BEARER_TOKEN = f"Bearer {SHEETY_API_KEY}"
 BEARER_HEADERS = {
-    "Authorization": "Bearer 5aX9f3$2W%C6ZzZM!6"
+    "Authorization": BEARER_TOKEN
 }
 
 
@@ -14,6 +17,7 @@ class DataManager:
 
     def get_destination_data(self):
         response = requests.get(url=SHEETY_PRICES_ENDPOINT, headers=BEARER_HEADERS)
+        print(response.text)
         data = response.json()
         self.destination_data = data["prices"]
         return self.destination_data

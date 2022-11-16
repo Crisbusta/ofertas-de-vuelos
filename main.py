@@ -2,6 +2,10 @@ from data_manager import DataManager
 from datetime import datetime, timedelta
 from flight_search import FlightSearch
 from notification_manager import NotificationManager
+import os
+print(os.environ.get("SHEETY_API_KEY"))
+print(os.environ.get("TWILIO_API_KEY"))
+print(os.environ.get("TEQUILA_API_KEY"))
 
 ORIGIN_CITY_IATA = "SCL"
 
